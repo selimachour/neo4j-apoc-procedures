@@ -16,7 +16,7 @@ You can specify the merge behavior for properties globally and/or individually.
 MATCH (p:Person)
 WITH p ORDER BY p.created DESC // newest one first
 WITH p.email, collect(p) as nodes
-CALL apoc.refactor.mergeNodes(nodes, {properties: {name:'discard', age:'overwrite', kids:'combine', `addr.*`, 'overwrite',`.*`: 'discard'}}) YIELD node
+CALL apoc.refactor.mergeNodes(nodes, {properties: {name:'discard', age:'overwrite', kids:'combine', `addr.*`: 'overwrite', `.*`: 'discard'}}) YIELD node
 RETURN node
 ----
 
